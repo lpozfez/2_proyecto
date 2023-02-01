@@ -39,6 +39,20 @@ class MesaRepository extends ServiceEntityRepository
         }
     }
 
+    
+    public function toArray() 
+    { 
+        return [ 
+            'id' => $this->getId(), 
+            'ancho' => $this->getAncho(), 
+            'alto' => $this->getAlto(), 
+            'x' => $this->getX(),
+            'y' => $this->getY(),
+            'imagen' => $this->getImagen(), 
+            'reservas' => $this->getReservas() 
+        ]; 
+    }
+
 //    /**
 //     * @return Mesa[] Returns an array of Mesa objects
 //     */

@@ -22,7 +22,7 @@ class Mesa
     #[ORM\Column(type: Types::DECIMAL, precision: 5, scale: 2)]
     private ?string $alto = null;
 
-    #[ORM\Column(type: Types::DECIMAL, precision: 5, scale: 2)]
+    #[ORM\Column(type: Types::DECIMAL, precision: 5, scale: 2, nullable: true)]
     private ?string $x = null;
 
     #[ORM\Column(type: Types::DECIMAL, precision: 5, scale: 2, nullable: true)]
