@@ -6,7 +6,6 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
-#[Route('/mesa', name: 'mesa')]
 class MesaController extends AbstractController
 {
     #[Route('/mesa', name: 'app_mesa')]
@@ -17,28 +16,28 @@ class MesaController extends AbstractController
         ]);
     }
 
-    // #[Route('/nueva', name: 'nueva_mesa')]
-    // public function new(): Response
-    // {
-    //     $mesa=new Mesa();
-    //     $form=$this->createForm(JuegosType::class,$mesa);
+    #[Route('mesa/nueva', name: 'nueva_mesa')]
+    public function new(): Response
+    {
+        $mesa=new Mesa();
+        $form=$this->createForm(JuegosType::class,$mesa);
 
-    //     $form->handleRequest($request);
-    //     if ($form->isSubmitted() && $form->isValid()) {
-    //         // $form->getData()Obtiene los datos del formulario
-    //         $mesa = $form->getData();
+        $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid()) {
+            // $form->getData()Obtiene los datos del formulario
+            $mesa = $form->getData();
 
-    //         //$img->move($directory, $someNewFilename);
+            //$img->move($directory, $someNewFilename);
 
-    //         $em->persist($mesa);
-    //         $em->flush();
-    //     }
+            $em->persist($mesa);
+            $em->flush();
+        }
         
-    //     return $this->render('juego/juegoForm.html.twig', [
-    //         'form' => $form,
-    //     ]);
+        return $this->render('juego/juegoForm.html.twig', [
+            'form' => $form,
+        ]);
 
-    // }
+    }
 
 
 
