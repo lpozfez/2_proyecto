@@ -14,46 +14,31 @@ use Symfony\Component\HttpFoundation\JsonResponse;
 
 class ApiMesaController extends AbstractController
 {
-    private $repositorioMesa;
 
-    public function __constructor(MesaRepository $repositorioDeMesa){
-        $this->repositorioMesa=$repositorioDeMesa;
+    #[Route('/api/mesa/nueva', name:'add_mesa')]
+    public function addMesa(Mesa $m):Response
+    {
+
     }
 
     #[Route('/api/mesa/{id}', name: 'get_mesa')]
-    public function getMesa(ManagerRegistry $doctrine,$id): JsonResponse
+    public function getMesa(MesaRepository $mesaRepository,$id): JsonResponse
     {
-       $mesa=$doctrine->getRepository(Mesa::class)->findOneBy(['id'=>$id]);
+       $mesa=$mesaRepository->find($id);
 
-       $datos[] = [ 
-        'id' => $mesa->getId(), 
-        'ancho'=>$mesa->getAncho(),
-        'alto'=>$mesa->getAlto(),
-        'x'=>$mesa->getX(),
-        'y'=>$mesa->getY(),
-        'imagen'=>$mesa->getImagen(),
-        'reservas'=>$mesa->getReservas()
-        ]; 
+       $datos[] = $mesa->toArray();
 
        return $this->json($datos, $status=200);
     }
 
     #[Route("/api/mesa", name:"todas_mesas")]
-    public function getMesas(ManagerRegistry $doctrine): JsonResponse 
+    public function getMesas(MesaRepository $mesaRepository): JsonResponse 
     { 
-        $mesas = $doctrine->getRepository(Mesa::class)->findAll(); 
+        $mesas = $mesaRepository->findAll(); 
         $datos = []; 
     
         foreach ($mesas as $mesa) { 
-            $datos[] = [ 
-                'id' => $mesa->getId(), 
-                'ancho'=>$mesa->getAncho(),
-                'alto'=>$mesa->getAlto(),
-                'x'=>$mesa->getX(),
-                'y'=>$mesa->getY(),
-                'imagen'=>$mesa->getImagen(),
-                'reservas'=>$mesa->getReservas()
-            ]; 
+            $datos[] = $mesa->toArray();
         } 
     
         return $this->json($datos, $status=200); 

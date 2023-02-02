@@ -39,6 +39,19 @@ class Mesa
         $this->reservas = new ArrayCollection();
     }
 
+    public function toArray() 
+    { 
+        return [ 
+            'id' => $this->getId(), 
+            'ancho' => $this->getAncho(), 
+            'alto' => $this->getAlto(), 
+            'x' => $this->getX(),
+            'y' => $this->getY(),
+            'imagen' => $this->getImagen(), 
+            'reservas' => $this->getReservas() 
+        ]; 
+    }
+
     public function getId(): ?int
     {
         return $this->id;
