@@ -25,9 +25,17 @@ class ApiMesaController extends AbstractController
     {
        $mesa=$doctrine->getRepository(Mesa::class)->findOneBy(['id'=>$id]);
 
-       $datos[]=$mesa->toArray();
+       $datos[] = [ 
+        'id' => $mesa->getId(), 
+        'ancho'=>$mesa->getAncho(),
+        'alto'=>$mesa->getAlto(),
+        'x'=>$mesa->getX(),
+        'y'=>$mesa->getY(),
+        'imagen'=>$mesa->getImagen(),
+        'reservas'=>$mesa->getReservas()
+        ]; 
 
-       return JsonResponse($datos, Response::HTTP_OK);
+       return $this->json($datos, $status=200);
     }
 
     #[Route("/api/mesa", name:"todas_mesas")]
