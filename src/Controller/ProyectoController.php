@@ -10,11 +10,13 @@ use Doctrine\Persistence\ManagerRegistry;
 
 class ProyectoController extends AbstractController{
 
-    /*
+    
     #[Route('/')]
     public function home():Response{
-        return new Response("Esta es la página de inicio(futura landing page)");
-    }*/
+        return $this->render('base.html.twig', [
+            //'form' => $form,
+        ]);
+    }
 }
 
 ?>
