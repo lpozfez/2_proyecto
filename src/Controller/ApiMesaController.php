@@ -44,15 +44,37 @@ class ApiMesaController extends AbstractController
     }
 
     #[Route('/api/mesa/{id}', name:'modifica_mesa', methods:['PUT'])]
-    public function updateMesa(int $id, MesaRepository $mesaRepository):JsonResponse
+    public function updateMesa(Request $request,int $id, MesaRepository $mesaRepository):JsonResponse
     {
-           
+        //Buscamos la mesa en BD
+        $mesa=$mesaRepository->find($id);
+        if(!$mesa){
+            return $this->json('Mesa no encontrada', 404);
+        }else{
+            //Añadimos los datos de la Request al Objeto Mesa
+            $data=json_decode($request->getContent(), true);
+            $mesa->setAncho($data['ancho']);
+            $mesa->setAlto($data['alto']);
+            $mesa->setX($data['x']);
+            $mesa->setY($data['y']);
+            $mesa->setImagen($data['imagen']);
+            //guardamos en BD
+            $mesaRepository->save($mesa, true);
+            return $this->json($data, 200);
+        }
     }
 
-    #[Route('/api/mesa/borrar/{id}', name:'borra_mesa', methods:['DELETE'])]
-    public function deleteMesa(MesaRepository $mesaRepository, int $id):JsonResponse
+    #[Route('/api/mesa/{id}', name:'borra_mesa', methods:['DELETE'])]
+    public function deleteMesa(Request $request,MesaRepository $mesaRepository, int $id):JsonResponse
     {
-
+        //Buscamos la mesa en BD
+        $mesa=$mesaRepository->find($id);
+        if($mesa==null){
+            return $this->json('Mesa no encontrada', 404);
+        }else{
+            $mesaRepository->remove($mesa, true);
+            return $this->json('Mesa borrada', 200);
+        }
     }
 
     #[Route('/api/mesa/{id}', name: 'get_mesa', methods:['GET', 'HEAD'])]
@@ -77,14 +99,6 @@ class ApiMesaController extends AbstractController
     
         return $this->json($datos, $status=200); 
     }
-
-    // #[Route('/api/mesa', name: 'app_api_mesa')]
-    // public function index(): Response
-    // {
-    //     return $this->render('api_mesa/index.html.twig', [
-    //         'controller_name' => 'ApiMesaController',
-    //     ]);
-    // }
 
 
 }
