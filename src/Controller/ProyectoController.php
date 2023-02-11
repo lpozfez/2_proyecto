@@ -11,11 +11,9 @@ use Doctrine\Persistence\ManagerRegistry;
 class ProyectoController extends AbstractController{
 
     
-    #[Route('/')]
+    #[Route('/', name: 'main')]
     public function home():Response{
-        return $this->render('base.html.twig', [
-            //'form' => $form,
-        ]);
+        return $this->render('base.html.twig');
     }
 }
 

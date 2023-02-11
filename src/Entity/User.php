@@ -4,10 +4,12 @@ namespace App\Entity;
 
 use App\Repository\UserRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
 
 #[ORM\Entity(repositoryClass: UserRepository::class)]
+#[UniqueEntity(fields: ['email'], message: 'There is already an account with this email')]
 class User implements UserInterface, PasswordAuthenticatedUserInterface
 {
     #[ORM\Id]
@@ -27,10 +29,10 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column]
     private ?string $password = null;
 
-    #[ORM\Column(length: 100)]
+    #[ORM\Column(length: 100, nullable: true)]
     private ?string $nombre = null;
 
-    #[ORM\Column(length: 255)]
+    #[ORM\Column(length: 255, nullable: true)]
     private ?string $apellidos = null;
 
     #[ORM\Column(length: 100, nullable: true)]
@@ -38,6 +40,25 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
     #[ORM\Column(nullable: true)]
     private ?int $puntos = null;
+
+    #[ORM\Column(type: 'boolean')]
+    private $isVerified = false;
+
+    public function toArray() 
+    { 
+        return [ 
+            'id' => $this->getId(), 
+            'email' => $this->getEmail(), 
+            'roles' => $this->getRoles(), 
+            'password' => $this->getPassword(),
+            'nombre' => $this->getNombre(),
+            'apellidos' => $this->getApellidos(), 
+            'telegram' => $this->getTelegram(),
+            'puntos' => $this->getPuntos()
+        ]; 
+    }
+
+    //GETTERS Y SETTERS
 
     public function getId(): ?int
     {
@@ -156,4 +177,18 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
         return $this;
     }
+
+    public function isVerified(): bool
+    {
+        return $this->isVerified;
+    }
+
+    public function setIsVerified(bool $isVerified): self
+    {
+        $this->isVerified = $isVerified;
+
+        return $this;
+    }
+
+
 }

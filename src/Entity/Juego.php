@@ -34,7 +34,7 @@ class Juego
     #[ORM\Column(type: Types::DECIMAL, precision: 5, scale: 2)]
     private ?string $altoTablero = null;
 
-    #[ORM\Column(length: 255)]
+    #[ORM\Column(length: 255, nullable: true)]
     private ?string $imagen = null;
 
     #[ORM\OneToMany(mappedBy: 'juego', targetEntity: Reserva::class, orphanRemoval: true)]
@@ -60,6 +60,20 @@ class Juego
         $this->altoTablero=$altoTab;
         $this->imagen=$imagen;
     }*/
+
+    public function toArray() 
+    { 
+        return [ 
+            'id' => $this->getId(), 
+            'nombre' => $this->getNombre(), 
+            'editorial' => $this->getEditorial(), 
+            'minJugadores' => $this->getMinJugadores(),
+            'maxJugadores' => $this->getMaxJugadores(),
+            'anchoTablero' => $this->getAnchoTablero(), 
+            'altoTablero' => $this->getAltoTablero(),
+            'imagen' => $this->getImagen() 
+        ]; 
+    }
 
 //GETTER Y SETTERS
 
