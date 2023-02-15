@@ -24,6 +24,7 @@ class ApiMesaController extends AbstractController
     {
         //Cogemos los datos de la Request
         $data=json_decode($request->getContent(), true);
+        
         $ancho=$data['ancho'];
         $alto=$data['alto'];
         $x=$data['x'];

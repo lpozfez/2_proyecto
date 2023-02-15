@@ -52,6 +52,9 @@ class DashboardController extends AbstractDashboardController
 
             MenuItem::section('Users'),
             MenuItem::linkToCrud('Users', 'fa fa-user', User::class),
+
+            //MenuItem::section('Juegos'),
+            //MenuItem::linkToCrud('Juegos', 'fa fa-user', Juego::class),
         ];
     }
 }

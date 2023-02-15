@@ -10,7 +10,6 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 use Doctrine\ORM\EntityManagerInterface;
 
-#[Route('/juego', name: 'juego')]
 class JuegoController extends AbstractController
 {
     #[Route('/juego', name: 'app_juego')]
@@ -22,7 +21,7 @@ class JuegoController extends AbstractController
     }
 
     /**Método que muestra el formulario para crear nuesvos productos */
-    #[Route('/nuevo', name: 'crear_juego')]
+    #[Route('juego/nuevo', name: 'crear_juego')]
     public function new(Request $request, EntityManagerInterface $em):Response{
 
         $juego=new Juego();

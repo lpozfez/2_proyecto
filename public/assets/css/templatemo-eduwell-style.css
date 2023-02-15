@@ -109,7 +109,7 @@ p {
 }
 
 img {
-  width: 100%;
+  width: 30%;
   overflow: hidden;
 }
 
@@ -297,7 +297,6 @@ header
 }
 
 .background-header .main-nav .logo img{
-  width: 10%;
   height: auto;
 }
 
