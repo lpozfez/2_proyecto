@@ -16,6 +16,7 @@
     <link rel="stylesheet" href="/assets/css/fontawesome.css">
     <link rel="stylesheet" href="/assets/css/owl.css">
     <link rel="stylesheet" href="/assets/css/lightbox.css">
+    <link rel="stylesheet" href="/assets/css/sass/css/main.css">
     {% endblock %}
 
 </head>
@@ -60,9 +61,10 @@
     {% endblock %}
 
     {% block body %}
-        <!-- ***** Carrusel ***** -->
-        <section>
-            <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+        
+        <section class="l-seccion--inicio col-12 row">
+            <!-- ***** Carrusel ***** -->
+            <div id="carouselExampleControls" class="col-5 carousel  slide" data-bs-ride="carousel">
                 <div class="carousel-inner">
                   <div class="carousel-item active">
                     <img src="/assets/images/juego-de-mesa.jpg" class="d-block w-100" alt="...">
@@ -82,9 +84,30 @@
                   <span class="carousel-control-next-icon" aria-hidden="true"></span>
                   <span class="visually-hidden">Next</span>
                 </button>
-              </div>
+            </div>
+              <!-- ***** Carrusel End ***** -->
+
+              <!-- ***** Formulario Registro ***** -->
+            <div class="col-5">
+                <div class="mb-3 row ">
+                    <label for="staticEmail" class="col-sm-2 col-form-label">Email</label>
+                    <div class="col-sm-10">
+                      <input type="text" readonly class="form-control-plaintext" id="staticEmail" value="email@example.com">
+                    </div>
+                  </div>
+                  <div class="mb-3 row">
+                    <label for="inputPassword" class="col-sm-2 col-form-label">Password</label>
+                    <div class="col-sm-10">
+                      <input type="password" class="form-control" id="inputPassword">
+                    </div>
+                    <div class="col-auto">
+                        <button type="submit" class="btn btn-primary mb-3">Confirm identity</button>
+                    </div>
+                </div>
+            </div>
+              <!-- ***** Formulario Registro End ***** -->
         </section>
-        <!-- ***** Carrusel End ***** -->
+        
     {% endblock %}
 
     {% block footer %}
