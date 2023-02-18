@@ -39,6 +39,17 @@ class JuegoRepository extends ServiceEntityRepository
         }
     }
 
+    public function findAllJuegos(): array
+    {
+        return $this->createQueryBuilder('j')
+            //    ->andWhere('j.exampleField = :val')
+            //    ->setParameter('val', $value)
+            ->orderBy('j.id', 'ASC')
+            //    ->setMaxResults(10)
+            ->getQuery()
+            ->getResult();
+    }
+
 //    /**
 //     * @return Juego[] Returns an array of Juego objects
 //     */

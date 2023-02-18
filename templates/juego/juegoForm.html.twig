@@ -1,1 +1,11 @@
-{{form(form)}}
+{% extends 'base.html.twig' %}
+
+{% block body %}
+<section class="l-seccion--inicio col-12 row main-banner" id="top">
+    {{form(form)}}
+    {% if error %}
+        <div class="alert alert-danger">{{ error.messageKey }}</div>
+    {% endif %}
+</section>
+
+{% endblock %}
