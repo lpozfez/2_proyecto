@@ -1,35 +1,7 @@
-<!DOCTYPE html>
-<html>
+{% extends 'base.html.twig' %}
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="">
-    <meta name="author" content="">
-    <title>{% block title %}Xocas y Cía.{% endblock %}</title>
 
-    {% block stylesheets %}
-    <!-- Bootstrap core CSS -->
-    <link href="/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="/assets/css/templatemo-eduwell-style.css">
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans:100,200,300,400,500,600,700,800,900" rel="stylesheet">
-    <link rel="stylesheet" href="/assets/css/fontawesome.css">
-    <link rel="stylesheet" href="/assets/css/owl.css">
-    <link rel="stylesheet" href="/assets/css/lightbox.css">
-
-    <link rel="stylesheet" href="/assets/css/sass/css/main.css">
-
-    <link rel="stylesheet" href="/js/ui/css/jquery-ui.css">
-    <link rel="stylesheet" href="/js/ui/css/jquery-ui.structure.css">
-    <link rel="stylesheet" href="/js/ui/css/jquery-ui.theme.css">
-    <link rel="stylesheet" href="/js/ui/css/estilos.css" media="screen">
-    {% endblock %}
-
-</head>
-
-<body>
-    
-    {% block sidebar %}    
+{% block sidebar %}    
         <!-- ***** Header Area Start ***** -->
         <header class="header-area header-sticky">
             <div class="container">
@@ -50,7 +22,7 @@
                                 {% if app.user %}
     
                                     <li ><a href="{{path('app_reserva')}}" class="active">Reservas</a></li>
-                                    <li><a href="{{path('app_user')}}">Hola <em>{{ app.user.nombre }}</a></li>
+                                    <li><a href="{{path('app_user')}}">Hola <em>{{ app.user.nombre }}</em></a></li>
                                     <li ><a href="{{path('app_logout')}}">Logout</a></li>
                                     
                                 {% else %}
@@ -182,78 +154,3 @@
         <!-- ***** Footer Area End ***** -->
     
     {% endblock %}
-
-
-    
-    {% block javascript %}
-    <!-- Scripts -->
-    <!-- Bootstrap core JavaScript -->
-    <script src="/vendor/jquery/jquery.min.js"></script>
-    <script src="/vendor/bootstrap/js/bootstrap.min.js"></script>
-
-    <script src="/assets/js/owl-carousel.js"></script>
-    <script src="/assets/js/lightbox.js"></script>
-    <script src="/assets/js/tabs.js"></script>
-    <script src="/assets/js/video.js"></script>
-    <script src="/assets/js/slick-slider.js"></script>
-    <script src="/assets/js/custom.js"></script>
-    <script src="/assets/js/isotope.min.js"></script>
-
-    <script src="/js/js/jquery.js"></script>
-    <script src="/js/js/jquery-ui.js"></script>
-    <script src="/js/js/mesas.js"></script>
-    <script src="/js/js/Mesa.js"></script>
-
-
-        <script>
-        //according to loftblog tut
-        $('.nav li:first').addClass('active');
-
-        var showSection = function showSection(section, isAnimate) {
-            var
-                direction = section.replace(/#/, ''),
-                reqSection = $('.section').filter('[data-section="' + direction + '"]'),
-                reqSectionPos = reqSection.offset().top - 0;
-
-            if (isAnimate) {
-                $('body, html').animate({
-                    scrollTop: reqSectionPos
-                },
-                    800);
-            } else {
-                $('body, html').scrollTop(reqSectionPos);
-            }
-
-        };
-
-        var checkSection = function checkSection() {
-            $('.section').each(function () {
-                var
-                    $this = $(this),
-                    topEdge = $this.offset().top - 80,
-                    bottomEdge = topEdge + $this.height(),
-                    wScroll = $(window).scrollTop();
-                if (topEdge < wScroll && bottomEdge > wScroll) {
-                    var
-                        currentId = $this.data('section'),
-                        reqLink = $('a').filter('[href*=\\#' + currentId + ']');
-                    reqLink.closest('li').addClass('active').
-                        siblings().removeClass('active');
-                }
-            });
-        };
-
-        $('.main-menu, .responsive-menu, .scroll-to-section').on('click', 'a', function (e) {
-            e.preventDefault();
-            showSection($(this).attr('href'), true);
-        });
-
-        $(window).scroll(function () {
-            checkSection();
-        });
-    </script>
-
-    {% endblock %}
-</body>
-
-</html>
