@@ -46,21 +46,17 @@
                             <!-- ***** Menu Start ***** -->
                             <ul class="nav">
                                 <h1><a href="{{path('main')}}">Xocas y Cía.</a> </h1>
-
                                 <li ><a href="{{path('app_juego')}}" class="active">Juegos</a></li>
-                                
                                 {% if app.user %}
-                                    <pre>
-                                        {{ dump(app.user) }}
-                                    </pre>
+    
                                     <li ><a href="{{path('app_reserva')}}" class="active">Reservas</a></li>
-                                    
+                                    <li><a href="{{path('app_user')}}">Hola <em>{{ app.user.nombre }}</em></a></li>
                                     <li ><a href="{{path('app_logout')}}">Logout</a></li>
                                     
                                 {% else %}
                                     <li ><a href="{{path('app_login')}}">Login</a></li>
                                 {% endif %}
-                                 
+                                
                             </ul>        
                             <a class='menu-trigger'>
                                 <span>Menu</span>
@@ -106,7 +102,7 @@
                     </div>
                     <!-- ***** Formulario Registro ***** -->
                     {% if app.user%}
-                        <h1>Hola <em>{{ app.user.roles }}</em></h1>
+                        
                     {% else %}
                     <div class="col-lg-4">
                         <form id="contact" action="{{path('app_register')}}" method="post">
