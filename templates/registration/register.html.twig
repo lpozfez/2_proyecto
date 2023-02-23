@@ -6,16 +6,31 @@
     {% for flash_error in app.flashes('verify_email_error') %}
         <div class="alert alert-danger" role="alert">{{ flash_error }}</div>
     {% endfor %}
+    {#<section class="l-seccion--inicio col-12 row main-banner" id="top"></section>#}
+    <section class="contact-us" id="contact-section">
+        <div class="container">
+            <div class="row ">
+                <div class="col-lg-7">
+                    {{ form_start(registrationForm, {'attr': {'id': 'contact'}}) }}
+                        <div class="col-12">
+                            <div class="section-heading">
+                                <h1><em>Registro</em> de Usuario</h1>
+                            </div>
+                        </div>
+                        <br>
+                        {{ form_row(registrationForm.email) }}
+                        {{ form_row(registrationForm.nombre) }}
+                        {{ form_row(registrationForm.apellidos) }}
+                        {{ form_row(registrationForm.telegram) }}
+                        {{ form_row(registrationForm.plainPassword, {
+                            label: 'Password'
+                        }) }}
+                        {{ form_row(registrationForm.agreeTerms) }}
 
-    <h1>Register</h1>
-
-    {{ form_start(registrationForm) }}
-        {{ form_row(registrationForm.email) }}
-        {{ form_row(registrationForm.plainPassword, {
-            label: 'Password'
-        }) }}
-        {{ form_row(registrationForm.agreeTerms) }}
-
-        <button type="submit" class="btn">Register</button>
-    {{ form_end(registrationForm) }}
+                        <button type="submit" class="btn">Register</button>
+                    {{ form_end(registrationForm) }}
+                </div>
+            </div>
+        </div>
+    </section>
 {% endblock %}

@@ -18,6 +18,7 @@ class JuegoController extends AbstractController
 
     public function index(JuegoRepository $repo): Response
     {
+        $path='..\public\assets\images\juegos';
         $juegos=$repo->findAllJuegos();
         //var_dump($juegos);
 
@@ -26,9 +27,9 @@ class JuegoController extends AbstractController
         ]);
     }
 
-    /**Método que muestra el formulario para crear nuesvos productos */
+    /**Método que muestra el formulario para crear nuevos productos */
     #[Route('juego/nuevo', name: 'crear_juego')]
-    public function new(Request $request, EntityManagerInterface $em, JuegoRepository $repo):Response{
+    public function new(Request $request, JuegoRepository $repo):Response{
 
         $juego=new Juego();
         $directorio='..\public\assets\images\juegos';
@@ -39,39 +40,54 @@ class JuegoController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
 
-            if(!$repo->find($juego->getId()))
-            {
-
-                //Obtenemos la imagen del formulario
-                $imagen = $form['imagen']->getData();
-
-                //Buscamos el nombre del archivo
-                $nombreOriginal = pathinfo($imagen->getClientOriginalName(), PATHINFO_imagenNAME);
-
-                //Capturamos la extensión
-                $extension = $imagen->guessExtension();
-
-                //Creamo el nuevo nombre de la imagen con el nombre original junto a la extensión
-                $nuevoNombreImg=$nombreOriginal.'.'.$extension;
-
-                //Añadimos el nuevo nombre de la imagen al juego creado con los datos del formulario
-                $juego->setImagen($nuevoNombreImg);
-
-                //Movemos la imagen al directorio deseado
-                $imagen->move($directorio, $nuevoNombreImg);
-
-                //Guardamos el juego en base de datos
-                $em->persist($juego);
-                $em->flush();
-            }else{
-                $error='El juego ya existe';
-            }
+            $juego=$form->getData();
+            //Obtenemos la imagen del formulario
+            $imagen = $form['imagen']->getData();
+            trataImagen($imagen,$juego,$directorio);
+            //Guardamos el juego en base de datos
+            $repo->save($juego,true);
         }
         
         return $this->render('juego/juegoForm.html.twig', [
             'form' => $form,
-            'error'=>$error
         ]);
 
+    }
+
+    /**Método que muestra el formulario para modificar juegos */
+    #[Route('juego/modificar/{id}', name: 'modificar_juego')]
+    public function update(Request $request, JuegoRepository $repo, int $id):Response{
+
+        $juego=$repo->find($id);
+        if (!$juego) {
+            throw $this->createNotFoundException(
+                'Producto no encontrado '.$id
+            );
+        }else{
+            $form=$this->createForm(JuegosType::class,$juego);
+            $form->handleRequest($request);
+            //capturar datos de formaulario y setear datos
+        }
+        
+
+        return $this->render('juego/juegoModForm.html.twig', [
+            'form' => $form,
+        ]);
+
+        /**$entityManager = $doctrine->getManager();
+        $producto = $entityManager->getRepository(Producto::class)->find($id);
+
+        if (!$producto) {
+            throw $this->createNotFoundException(
+                'Producto no encontrado '.$id
+            );
+        }
+
+        $producto->setNombre('Teclado con led');
+        $entityManager->flush();
+
+        return $this->redirectToRoute('muestra_producto', [
+            'id' => $producto->getId()
+        ]); */
     }
 }

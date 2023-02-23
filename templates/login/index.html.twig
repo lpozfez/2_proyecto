@@ -8,17 +8,25 @@
     {% endif %}
 
     {% block content %}
-        <section class="l-seccion--inicio col-12 row main-banner" id="top">
-            <form action="{{ path('app_reserva') }}" method="post">
-                <label for="username">Email:</label>
-                <input type="text" id="username" name="_username" value="{{ last_username }}">
-
-                <label for="password">Password:</label>
-                <input type="password" id="password" name="_password">
-
-                <button type="submit">login</button>
-            </form>
-        </section>
+    <section class="contact-us" id="contact-section">
+        <div class="container">
+            <div class="row ">
+                <section class="col-12 row main-banner" id="top">
+                    <div class="col-4">
+                        <form action="{{ path('app_login') }}" method="post" id="contact">
+                            <label for="username">Email:</label>
+                            <input type="text" id="username" name="_username" value="{{ last_username }}">
+    
+                            <label for="password">Password:</label>
+                            <input type="password" id="password" name="_password">
+    
+                            <button type="submit">login</button>
+                        </form>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </section>
     {% endblock %}
 
 {% endblock %}
