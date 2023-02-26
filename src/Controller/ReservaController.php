@@ -16,4 +16,12 @@ class ReservaController extends AbstractController
             'controller_name' => 'ReservaController',
         ]);
     }
+
+    #[Route('/sala', name: 'app_sala')]
+    public function adminSala(AuthenticationUtils $authenticationUtils): Response
+    {
+        return $this->render('reserva/adminMesas.html.twig', [
+            'controller_name' => 'ReservaController',
+        ]);
+    }
 }

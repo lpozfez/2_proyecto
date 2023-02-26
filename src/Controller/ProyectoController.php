@@ -21,7 +21,7 @@ class ProyectoController extends AbstractController{
         }else{
             $user=null;
         }
-        return $this->render('home.html.twig',[
+        return $this->render('base.html.twig',[
             'user' => $user,
         ]);
     }

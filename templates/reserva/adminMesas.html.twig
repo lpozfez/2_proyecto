@@ -3,10 +3,40 @@
 {% block title %}Hello ReservaController!{% endblock %}
 
 {% block body %}
+    <section class="our-courses" id="courses">
+        <div class="container">
+            <div class="row">
+                <!--Inicio Controles-->
+                <div class="col-6 column">
+                    <div id="cont">
+                        <div id="datepicker"></div>
+                        <div class="column">
+                            <select name="horarios" id="horarios">Horarios</select>
+                            <select name="juegos" id="juegos">Juegos</select>
+                            <button id="nuevaMesa">Nueva mesa</button><br>
+                        </div>
+                    </div>
+                    <br>
+                    <div id="dialog" title="Crear nueva mesa" style="display: none;">
+                        <form action="">
+                            <label for="ancho">Ancho</label><br>
+                            <input type="number" min="100" name="ancho" id="ancho" class="text ui-widget-content ui-corner-all"><br>
+                            <label for="alto">Alto</label><br>
+                            <input type="number" min="100" name="alto" id="alto" class="text ui-widget-content ui-corner-all"><br>
+                            <input type="submit" id="pintar" value="Crear">
+                        </form>
+                    </div>
+                    <br>
+                    <div id="contenedorMesas"></div>
+                </div>
+                <!--Fin Controles-->
 
-<section class="l-seccion--inicio col-12 row main-banner" id="top">
-    <button>Nueva mesa</button>
-    <div id="sala"></div>
-    <div id="contenedorMesas"></div>
-</section>
+                <!--Inicio Sala-->
+                <div class="col-6 row">
+                    <div id="sala"></div><br>
+                </div>
+                <!--Fin Sala-->
+            </div>
+        </div>
+    </section>
 {% endblock %}

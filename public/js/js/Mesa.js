@@ -36,7 +36,28 @@ Mesa.prototype.solapado=function(mesa2){
     return choque;
 }
 
+function creaMesa(mesa, contenedor, sala){
+    debugger
+    var mesaDiv=$('<div>');
+    mesaDiv.width(mesa.ancho).height(mesa.alto).addClass("mesa");
+    console.log(mesaDiv);
+    mesaDiv.draggable({
+        helper:"clone",
+        revert:true,
+        revertDuration:0,
+    });
+    mesaDiv[0].objeto=mesa;
+        if(mesa.x!=null && mesa.y!=null){
+            mesaDiv.css({position:"absolute",  
+                         left: mesa.x+'px', 
+                         top:mesa.y+'px'}).appendTo(sala);
 
+            //mesaDiv.offset().left;
+            //mesaDiv.offset().top;
+        }else{
+            mesaDiv.appendTo(contenedor);
+        }
+}
 
 /*
 MesaObjeto.prototype.pinta=function(){

@@ -10,19 +10,22 @@
 
     {% block stylesheets %}
     <!-- Bootstrap core CSS -->
-    <link href="/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="/assets/css/templatemo-eduwell-style.css">
+    <link rel="stylesheet" href="{{asset('/js/ui/css/jquery-ui.css')}}">
+    <link rel="stylesheet" href="{{asset('/js/ui/css/jquery-ui.structure.css')}}">
+    <link rel="stylesheet" href="{{asset('/js/ui/css/jquery-ui.theme.css')}}">
+    <link rel="stylesheet" href="{{ asset('/js/ui/css/estilos.css') }}" media="screen">
+
+    <link href="{{ asset('/vendor/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
+    <link rel="stylesheet" href="{{asset('/assets/css/templatemo-eduwell-style.css')}}">
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:100,200,300,400,500,600,700,800,900" rel="stylesheet">
-    <link rel="stylesheet" href="/assets/css/fontawesome.css">
-    <link rel="stylesheet" href="/assets/css/owl.css">
-    <link rel="stylesheet" href="/assets/css/lightbox.css">
+    <link rel="stylesheet" href="{{asset('/assets/css/fontawesome.css')}}">
+    <link rel="stylesheet" href="{{asset('/assets/css/owl.css')}}">
+    <link rel="stylesheet" href="{{asset('/assets/css/lightbox.css')}}">
 
-    <link rel="stylesheet" href="/assets/css/sass/css/main.css">
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
+    <link rel="stylesheet" href="/resources/demos/style.css">
 
-    <link rel="stylesheet" href="/js/ui/css/jquery-ui.css">
-    <link rel="stylesheet" href="/js/ui/css/jquery-ui.structure.css">
-    <link rel="stylesheet" href="/js/ui/css/jquery-ui.theme.css">
-    <link rel="stylesheet" href="/js/ui/css/estilos.css" media="screen">
+
     {% endblock %}
 
 </head>
@@ -38,19 +41,19 @@
                         <nav class="main-nav">
                             <!-- ***** Logo Start ***** -->
                             <a href="{{path('main')}}" class="logo">
-                                <img src="/assets/images/logo.png" alt="logo milennium">
+                                <img src="{{asset('/assets/images/logo.png')}}" alt="logo milennium">
                             </a>
                             
                             <!-- ***** Logo End ***** -->
                     
                             <!-- ***** Menu Start ***** -->
                             <ul class="nav">
-                                <h1><a href="{{path('main')}}">Xocas y Cía.</a> </h1>
+                                <h3><a href="{{path('main')}}">Xocas y Cía.</a> </h3>
                                 <li ><a href="{{path('app_juego')}}" class="active">Juegos</a></li>
                                 {% if app.user %}
     
                                     <li ><a href="{{path('app_reserva')}}" class="active">Reservas</a></li>
-                                    <li><a href="{{path('app_user')}}">Hola <em>{{ app.user.nombre }}</a></li>
+                                    <li><a href="{{path('app_user')}}">Hola <em>{{ app.user.nombre }}</em></a></li>
                                     <li ><a href="{{path('app_logout')}}">Logout</a></li>
                                     
                                 {% else %}
@@ -80,13 +83,13 @@
                         <div id="carouselExampleControls" class="carousel  slide" data-bs-ride="carousel">
                             <div class="carousel-inner">
                             <div class="carousel-item active">
-                                <img src="/assets/images/juego-de-mesa.png" class="d-block w-100" alt="...">
+                                <img src="{{asset('/assets/images/juego-de-mesa.png')}}" class="d-block w-100" alt="...">
                             </div>
                             <div class="carousel-item">
-                                <img src="/assets/images/juegos-de-mesa-cooperativos.png" class="d-block w-100" alt="...">
+                                <img src="{{asset('/assets/images/juegos-de-mesa-cooperativos.png')}}" class="d-block w-100" alt="...">
                             </div>
                             <div class="carousel-item">
-                                <img src="/assets/images/jugadores.png" class="d-block w-100" alt="...">
+                                <img src="{{asset('/assets/images/jugadores.png')}}" class="d-block w-100" alt="...">
                             </div>
                             </div>
                             <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
@@ -188,21 +191,28 @@
     {% block javascript %}
     <!-- Scripts -->
     <!-- Bootstrap core JavaScript -->
-    <script src="/vendor/jquery/jquery.min.js"></script>
-    <script src="/vendor/bootstrap/js/bootstrap.min.js"></script>
+    <script src="{{asset('/js/js/jquery.js')}}"></script>
+    <script src="{{asset('/js/js/jquery-ui.js')}}"></script>
+    <script src="{{asset('/js/js/Mesa.js')}}"></script>
+    <script src="{{asset('/js/js/sala.js')}}"></script>
+    <script src="{{asset('/js/js/gestionSala.js')}}"></script>
 
-    <script src="/assets/js/owl-carousel.js"></script>
-    <script src="/assets/js/lightbox.js"></script>
-    <script src="/assets/js/tabs.js"></script>
-    <script src="/assets/js/video.js"></script>
-    <script src="/assets/js/slick-slider.js"></script>
-    <script src="/assets/js/custom.js"></script>
-    <script src="/assets/js/isotope.min.js"></script>
+    <script src="{{asset('/vendor/jquery/jquery.min.js')}}"></script>
+    <script src="{{asset('/vendor/bootstrap/js/bootstrap.min.js')}}"></script>
 
-    <script src="/js/js/jquery.js"></script>
-    <script src="/js/js/jquery-ui.js"></script>
-    <script src="/js/js/mesas.js"></script>
-    <script src="/js/js/Mesa.js"></script>
+    <script src="{{asset('/assets/js/jquery-3.6.3.js')}}"></script>
+    <script src="{{asset('/assets/js/owl-carousel.js')}}"></script>
+    <script src="{{asset('/assets/js/lightbox.js')}}"></script>
+    <script src="{{asset('/assets/js/tabs.js')}}"></script>
+    <script src="{{asset('/assets/js/video.js')}}"></script>
+    <script src="{{asset('/assets/js/slick-slider.js')}}"></script>
+    <script src="{{asset('/assets/js/custom.js')}}"></script>
+    <script src="{{asset('/assets/js/isotope.min.js')}}"></script>
+    
+    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+    <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+
+
 
 
         <script>
