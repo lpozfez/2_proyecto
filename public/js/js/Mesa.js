@@ -3,7 +3,7 @@ function Mesa(ancho, alto, x=null, y=null){
     this.alto=alto;
     this.x=x;
     this.y=y;
-    this.posicion=[this.x,(this.x+this.ancho),this.y,(this.y+this.alto)];
+    this.posicion=[this.x,(parseInt(this.x)+parseInt(this.ancho)),this.y,(parseInt(this.y)+parseInt(this.alto))];
     
     //[x,(x+ancho),y,(y+alto)];
 }
@@ -13,8 +13,8 @@ Mesa.prototype.solapado=function(mesa2){
     debugger
     var choque=false;
     
-    this.posicion=[this.x,(this.x+this.ancho),this.y,(this.y+this.alto)];
-    mesa2.posicion=[mesa2.x,(mesa2.x+mesa2.ancho),mesa2.y,(mesa2.y+mesa2.alto)];
+    this.posicion=[this.x,(parseInt(this.x)+parseInt(this.ancho)),this.y,(parseInt(this.y)+parseInt(this.alto))];
+    mesa2.posicion=[mesa2.x,(parseInt(mesa2.x)+parseInt(mesa2.ancho)),mesa2.y,(parseInt(mesa2.y)+parseInt(mesa2.alto))];
 
     console.log(this.posicion);
     console.log(mesa2.posicion);
@@ -59,41 +59,3 @@ function creaMesa(mesa, contenedor, sala){
         }
 }
 
-/*
-MesaObjeto.prototype.pinta=function(){
-
-    var divMesa = $("<div>");
-    console.log(this.width);
-    console.log(this.height);
-    divMesa.width(this.width);
-    divMesa.height(this.height);
-    divMesa.css('backgroundColor','brown');
-    divMesa.attr('class','mesa');
-    $(".almacen").append(divMesa); 
-    divMesa.draggable({
-     revert: true,
-       helper: 'clone',
-       revertDuration:0,
-       start:function(ev,ui){
-         $(this).attr("data-y",ui.offset.top)
-         $(this).attr("data-x",ui.offset.left)
-    }})
- }*/
-
-
-/**
- * Mesa.prototype.creaMesa=function(ancho,alto){
-    var nuevaMesa=new Mesa(ancho,alto,null,null);
-    //console.log(mesa);
-    var contenedorMesas=$("#contenedorMesas");
-    var mesa=$("<div>");
-    mesa.width(nuevaMesa.ancho);
-    mesa.height(nuevaMesa.alto);
-    mesa.addClass("mesa").draggable({
-        stop:function(ev,ui){
-            $(this)[0].x=ui.posicionition.top;
-            $(this)[0].y=ui.posicionition.left;
-        }
-    }).appendTo(contenedorMesas);
-}
- */

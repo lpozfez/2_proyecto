@@ -8,20 +8,24 @@ $(function(){
         width: 350,
         modal: true,
         buttons: {
+            'Crear': pintar,
             Cancel: function(event, ui) {
-              dialog.dialog( "close" );
+                form[ 0 ].reset();
+                dialog.dialog( "close" );
             }
+
         }
     });
     
-    $("#pintar").click(function(){
+    function pintar(){
         var contenedor=$('#contenedorMesas');
         var sala=$('#sala');
         var ancho=$('#ancho').val();
         var alto=$('#alto').val();
         var mesa=new Mesa(ancho,alto);
         creaMesa(mesa, contenedor, sala);
-    });
+        dialog.dialog( "close" );
+    }
 
     //Acciones para el botón NuevaMesa
     $( "#nuevaMesa" ).click(function(){
