@@ -1,7 +1,25 @@
 $(function(){
+    var selectHoras=$('horarios');
+    var selectJuegos=$('juegos');
     //Calendario
     $( "#datepicker" ).datepicker();
+
+    //Rellenamos el select de horario
+    $.ajax({
+        url:"https://localhost:8000/api/juego",
+        datatype: "json"
+    }).done(function(data){
+        debugger
+        console.log(data);
+        $.each(data,function(i,v){
+            $("<option>").val(v.id).text(v.nombre).appendTo(selectJuegos);
+        })
+    })
+
     
+
+
+    //Creamos el dialog
     var dialog=$( "#dialog" ).dialog({
         autoOpen:false,
         height: 400,
@@ -16,7 +34,7 @@ $(function(){
 
         }
     });
-    
+    //Función para crear la mesa con el dialog
     function pintar(){
         var contenedor=$('#contenedorMesas');
         var sala=$('#sala');
@@ -27,7 +45,7 @@ $(function(){
         dialog.dialog( "close" );
     }
 
-    //Acciones para el botón NuevaMesa
+    //Acciones para el botón NuevaMesa que abre el dialog
     $( "#nuevaMesa" ).click(function(){
         dialog.dialog('open');
     });

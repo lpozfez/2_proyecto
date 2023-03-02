@@ -5,12 +5,12 @@
 {% block body %}
 <div class="section-heading ">
   
-  <section class="row main-banner">
-      <div class="l-seccion">
+  <section class="row main-banner" id="juegos">
+      <div class="col-12>
         {% for juego in juegos %}
         
           <div class="card col-2" style="width: 18rem;" >
-              <img src="{{asset('assets/images/juegos/' ~ juego.imagen)}}" class="card-img-top" alt="...">
+              <img src="{{asset('assets/images/juegos/' ~ juego.imagen)}}" class="card-img-top " alt="...">
               <div class="card-body">
                 <h4 class="card-text"><em>{{juego.nombre}}</em></h4>
                 <p class="card-text">{{juego.editorial}}</p>
