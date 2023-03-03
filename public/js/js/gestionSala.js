@@ -12,7 +12,7 @@ $(function(){
         debugger
         console.log(data);
         $.each(data,function(i,v){
-            $("<option>").val(v.id).text(v.nombre).appendTo(selectJuegos);
+            $("<option>").val(v[i].id).text(v[i].nombre).appendTo(selectJuegos);
         })
     })
 

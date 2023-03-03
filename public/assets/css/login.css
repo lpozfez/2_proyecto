@@ -33,22 +33,24 @@ body{
 
 
 section.contact-us:after{
-    background-image: none;
-
+    display: none;
+    /*background-image: none;
+    position: none;
+    top: 0;
+    width: 0;
+    height: 0;*/
 }
 
 div.container{
     width: 100%;
     height: 100%;
-    position: none;    
-
     margin: 0;
     padding: 0;
     display: flex;
     flex-direction: column;
-    align-content: center;
     align-items: center;
     justify-content: center;
+    flex-wrap:wrap;
 }
 
 form #contact{
@@ -56,4 +58,18 @@ form #contact{
     padding: 0;
 }
 
+div.container a{
+    text-align: center;
+}
 
+div.container a img{
+    width: 200px;
+    height: 200px;
+}
+
+.error{
+    color: rgb(255, 94, 0);
+    font-size: 20px;
+    text-align: center;
+    font-weight: bolder;
+}
