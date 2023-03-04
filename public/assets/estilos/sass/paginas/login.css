@@ -5,11 +5,10 @@ body{
     align-items: center;
     margin: 0;
     padding: 0;
-    background-image: url(../images/fondo.jpg);
+    background-image: url(../../../images/fondo.jpg);
     background-size: 100%;
     background-repeat: no-repeat;
     background-position: center;
-
     height: 100vh;
 }
 .login.contact-us{
@@ -71,5 +70,10 @@ div.container a img{
     color: rgb(255, 94, 0);
     font-size: 20px;
     text-align: center;
-    font-weight: bolder;
+    font-weight:bold;
+}
+
+.enlaceBruto{
+    color: rgb(231, 19, 238);
+    font-size: 20px;
 }

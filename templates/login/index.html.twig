@@ -1,8 +1,8 @@
 {% extends 'base.html.twig' %}
 
 {% block stylesheets %}
-    {{ parent() }}
-    <link rel="stylesheet" href="{{asset('/assets/css/login.css')}}">
+    {{parent()}}
+    <link rel="stylesheet"  media="screen" href="{{asset('/assets/estilos/sass/paginas/login.css')}}">
 {% endblock %}
 
 {% block body %}
@@ -27,6 +27,7 @@
             {% if error %}
             <span class="error">{{ error.messageKey|trans(error.messageData, 'security') }}</span>
             {% endif %}
+            <a href="{{path('main')}}" class="enlaceBruto">Volver</a>
 
         </div>
     </section>

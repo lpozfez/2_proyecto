@@ -1,0 +1,19 @@
+
+#juegos img{
+    width: 150px;
+    height:200px;
+    align-self: center;
+}
+
+#juegos .card{
+    width: 15rem;
+
+} 
+
+
+#juegos{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-content: center;
+}

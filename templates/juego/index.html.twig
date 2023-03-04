@@ -10,12 +10,12 @@
 {% block body %}
 <div class="section-heading ">
   
-  <section class="row main-banner" id="juegos">
-      <div class="col-12>
+  <section class="row main-banner" >
+      <div class="col-12" id="juegos">
         {% for juego in juegos %}
         
-          <div class="card col-2" style="width: 18rem;" >
-              <img src="{{asset('assets/images/juegos/' ~ juego.imagen)}}" class="card-img-top " alt="...">
+          <div class="card col-2">
+              <img src="{{asset('assets/images/juegos/' ~ juego.imagen)}}" class="card-img-top" alt="..."/>
               <div class="card-body">
                 <h4 class="card-text"><em>{{juego.nombre}}</em></h4>
                 <p class="card-text">{{juego.editorial}}</p>
@@ -23,6 +23,7 @@
           </div>
         
         {% endfor %}
+        
       </div>
   </section>
 
