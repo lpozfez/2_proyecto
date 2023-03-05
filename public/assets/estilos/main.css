@@ -1090,24 +1090,34 @@ contact us
 --------------------------------------------- 
 */
 section.contact-us {
-  background-image: url(../images/footer-bg.png);
-  background-position: center center;
-  background-repeat: no-repeat;
-  background-size: cover;
   padding: 0px;
-  position: relative;
+  margin-left: 0px;
+  margin-right: 0px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
+/*
 section.contact-us:after {
   position: absolute;
-  content: "";
+  content: '';
   left: 0px;
   top: 60px;
   width: 267px;
   height: 396px;
   z-index: 0;
-}
-
+}*/
 section.contact-us .contact-info {
   background-color: #fff;
   margin-top: -30px;
@@ -4960,6 +4970,48 @@ html.lb-disable-scrolling {
   position: absolute;
 }
 
+.l-servicios {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -ms-flex-line-pack: center;
+      align-content: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+section.servicios .item:hover {
+  -webkit-box-shadow: 0 5px 15px rgba(239, 176, 176, 0.76);
+          box-shadow: 0 5px 15px rgba(239, 176, 176, 0.76);
+}
+
+section.contact-us {
+  background-image: url(../images/cta-bg.png);
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+  padding: 100px;
+  position: relative;
+}
+
+footer {
+  height: auto;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+  padding: 0;
+  position: relative;
+  margin-top: 140px;
+}
+
 #juegos img {
   width: 150px;
   height: 200px;
@@ -4983,4 +5035,26 @@ html.lb-disable-scrolling {
       justify-content: space-around;
   -ms-flex-line-pack: center;
       align-content: center;
+}
+
+.c-carrusel {
+  width: 100%;
+  -ms-flex-item-align: center;
+      align-self: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.c-servicios {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.icon img {
+  width: 100%;
 }/*# sourceMappingURL=main.css.map */

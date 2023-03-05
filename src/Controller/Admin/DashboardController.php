@@ -9,10 +9,16 @@ use EasyCorp\Bundle\EasyAdminBundle\Router\AdminUrlGenerator;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use App\Entity\User;
+use App\Entity\Juego;
+use App\Entity\Mesa;
+use App\Entity\Reserva;
+use App\Entity\Evento;
+use App\Entity\Tramo;
+use Symfony\Component\Security\Http\Attribute\IsGranted;
 
 class DashboardController extends AbstractDashboardController
 {
-    #[IsGranted('ROLE_ADMIN')]
+    //#[IsGranted('ROLE_ADMIN')]
     #[Route('/admin', name: 'admin')]
     public function index(): Response
     {
@@ -39,7 +45,7 @@ class DashboardController extends AbstractDashboardController
     {
         return Dashboard::new()
             ->setTitle('Xocas y Cía.')
-            ->setFaviconPath('favicon.svg');
+            ->setFaviconPath('logo.png');
     }
 
     public function configureMenuItems(): iterable
@@ -53,8 +59,8 @@ class DashboardController extends AbstractDashboardController
             MenuItem::section('Users'),
             MenuItem::linkToCrud('Users', 'fa fa-user', User::class),
 
-            //MenuItem::section('Juegos'),
-            //MenuItem::linkToCrud('Juegos', 'fa fa-user', Juego::class),
+            MenuItem::section('Juegos'),
+            MenuItem::linkToCrud('Juegos', 'fa fa-user', Juego::class),
         ];
     }
 }

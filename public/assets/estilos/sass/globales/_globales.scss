@@ -1,0 +1,24 @@
+section.servicios .item:hover{
+    box-shadow: 0 5px 15px rgba(239, 176, 176, 0.76);
+}
+
+section.contact-us{
+    background-image: url(../images/cta-bg.png);
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    padding: 100px;
+    position: relative;
+}
+
+footer{
+    height: auto;
+    //background-image: url(../images/footer-bg.png);
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    padding: 0;
+    position: relative;
+    margin-top: 140px;
+    
+}

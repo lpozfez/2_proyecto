@@ -1099,14 +1099,20 @@ contact us
 */
 
 section.contact-us {
-  background-image: url(../images/footer-bg.png);
-  background-position: center center;
-  background-repeat: no-repeat;
-  background-size: cover;
+  //background-image: url(../images/footer-bg.png);
+  //background-position: center center;
+  //background-repeat: no-repeat;
+  //background-size: cover;
   padding: 0px;
-  position: relative;
+  margin-left: 0px;
+  margin-right: 0px;
+  //position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
-
+/*
 section.contact-us:after {
   position: absolute;
   content: '';
@@ -1115,7 +1121,7 @@ section.contact-us:after {
   width: 267px;
   height: 396px;
   z-index: 0;
-}
+}*/
 
 section.contact-us .contact-info {
   background-color: #fff;

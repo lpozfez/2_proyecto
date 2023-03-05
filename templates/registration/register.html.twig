@@ -2,23 +2,22 @@
 
 {% block title %}Register{% endblock %}
 
+{% block stylesheets %}
+    {{parent()}}
+    <link rel="stylesheet"  media="screen" href="{{asset('/assets/estilos/sass/paginas/login.css')}}">
+{% endblock %}
+
 {% block body %}
-    {% for flash_error in app.flashes('verify_email_error') %}
-        <div class="alert alert-danger" role="alert">{{ flash_error }}</div>
-    {% endfor %}
+    {% block sidebar %}{% endblock %}
+
     {#<section class="l-seccion--inicio col-12 row main-banner" id="top"></section>#}
-    <section class="contact-us" id="contact-section">
-        <div class="container">
-            <div class="row ">
-                <div class="col-lg-7">
+    
+    <section class="login contact-us" id="contact-section">
+        
+        <div class="container registro">
+            <h1>Registro de usuario</h1>
                     {{ form_start(registrationForm, {'attr': {'id': 'contact'}}) }}
-                        <div class="col-12">
-                            <div class="section-heading">
-                                <h1><em>Registro</em> de Usuario</h1>
-                            </div>
-                        </div>
-                        <br>
-                        
+
                         {{ form_row(registrationForm.email) }}
                         {{ form_row(registrationForm.nombre) }}
                         {{ form_row(registrationForm.apellidos) }}
@@ -30,8 +29,13 @@
 
                         <button type="submit" class="btn">Register</button>
                     {{ form_end(registrationForm) }}
-                </div>
-            </div>
+                    <a href="{{path('main')}}" class="enlaceBruto">Volver</a>
+
+                    {% for flash_error in app.flashes('verify_email_error') %}
+                    <div class="alert alert-danger error" role="alert">{{ flash_error }}</div>
+                    {% endfor %}
         </div>
     </section>
+    {% block footer %}{% endblock %}
+
 {% endblock %}
